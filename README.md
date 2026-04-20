@@ -1,72 +1,62 @@
-# \# oran-metrics-cli
+# oran-metrics-cli
 
-# 
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Tests](https://img.shields.io/badge/Tests-10%20passed-brightgreen)
 
-# !\[Python](https://img.shields.io/badge/Python-3.10+-blue)
+CLI tool for O-RAN network metric calculations.
 
-# !\[License](https://img.shields.io/badge/License-MIT-green)
+## Install
 
-# 
+    git clone https://github.com/deepakkolhua/oran-metrics-cli.git
+    cd oran-metrics-cli
+    python -m venv .venv
+    source .venv/bin/activate
+    pip install -e .
 
-# CLI tool for O-RAN network metric calculations.
+## Usage
 
-# 
+### Individual commands
 
-# \## Features
+    oran-metrics throughput --bits 50000000 --time 1
+    oran-metrics latency --proc 3 --transport 2 --queue 1.5
+    oran-metrics cqi --sinr 15.5
 
-# \- Throughput calculator (Mbps)
+### Run all metrics from YAML config
 
-# \- E2E Latency budget (Near-RT / Non-RT RIC classification)
+    oran-metrics run --config examples/config.yaml
 
-# \- Spectral Efficiency (bps/Hz)
+### Example output
 
-# \- PRB Utilization
+    === SemDT-RAN Phase 1 ===
+    Throughput:    50.00 Mbps
+    Spectral Eff:  2.50 bps/Hz
+    PRB Util:      86.5%
+    SINR 15.5 dB -> CQI 11
+    E2E Latency:   6.50 ms (Near-RT RIC compatible)
 
-# \- SINR to CQI mapping (3GPP TS 38.214)
+## Run tests
 
-# 
+    pytest tests/ -v
 
-# \## Usage
+## Project structure
 
-# 
+    oran-metrics-cli/
+    ├── src/oran_metrics/
+    │   ├── __init__.py
+    │   ├── calculator.py
+    │   ├── cli.py
+    │   └── config_runner.py
+    ├── tests/
+    │   ├── test_calculator.py
+    │   └── test_config_runner.py
+    ├── examples/
+    │   └── config.yaml
+    ├── pyproject.toml
+    ├── requirements.txt
+    ├── LICENSE
+    └── .gitignore
 
-# &#x20;   python src/oran\_metrics/cli.py throughput --bits 50000000 --time 1
+## Author
 
-# &#x20;   python src/oran\_metrics/cli.py latency --proc 3 --transport 2 --queue 1.5
-
-# &#x20;   python src/oran\_metrics/cli.py cqi --sinr 15.5
-
-# 
-
-# \## Project Structure
-
-# 
-
-# &#x20;   oran-metrics-cli/
-
-# &#x20;   ├── src/oran\_metrics/
-
-# &#x20;   │   ├── \_\_init\_\_.py
-
-# &#x20;   │   ├── calculator.py
-
-# &#x20;   │   └── cli.py
-
-# &#x20;   ├── tests/
-
-# &#x20;   │   └── test\_calculator.py
-
-# &#x20;   ├── docs/
-
-# &#x20;   ├── README.md
-
-# &#x20;   ├── LICENSE
-
-# &#x20;   └── .gitignore
-
-# 
-
-# \## Author
-
-# Deepak Singh - KNU MONET Lab / AutonixAi
-
+Deepak Singh - KNU MONET Lab / AutonixAi
