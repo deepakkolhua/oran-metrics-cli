@@ -1,0 +1,19 @@
+experiment:
+  name: "SemDT-RAN Phase 1"
+  timestamp: "2026-04-21"
+
+gnb:
+  id: gNB-1
+  bandwidth_mhz: 20
+  total_prbs: 52
+  used_prbs: 45
+
+measurements:
+  data_bits: 50000000
+  time_seconds: 1
+  sinr_db: 15.5
+
+latency:
+  processing_ms: 3.0
+  transport_ms: 2.0
+  queuing_ms: 1.5

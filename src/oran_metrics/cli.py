@@ -1,6 +1,7 @@
 """Command-line interface for O-RAN metrics."""
 import argparse
 from oran_metrics.calculator import throughput, latency_budget, sinr_to_cqi
+from oran_metrics.config_runner import run_from_config
 
 
 def main():
@@ -19,6 +20,9 @@ def main():
     cqi = sub.add_parser("cqi")
     cqi.add_argument("--sinr", type=float, required=True)
 
+    run = sub.add_parser("run", help="Run all metrics from YAML config")
+    run.add_argument("--config", type=str, required=True)
+
     args = parser.parse_args()
 
     if args.command == "throughput":
@@ -31,6 +35,8 @@ def main():
     elif args.command == "cqi":
         result = sinr_to_cqi(args.sinr)
         print(f"SINR {args.sinr} dB -> CQI {result}")
+    elif args.command == "run":
+        run_from_config(args.config)
     else:
         parser.print_help()
 
