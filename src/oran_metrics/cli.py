@@ -1,8 +1,5 @@
 """Command-line interface for O-RAN metrics."""
 import argparse
-import sys
-sys.path.insert(0, "src")
-
 from oran_metrics.calculator import throughput, latency_budget, sinr_to_cqi
 
 

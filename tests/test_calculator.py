@@ -1,7 +1,4 @@
 """Tests for O-RAN metric calculators."""
-import sys
-sys.path.insert(0, "src")
-
 from oran_metrics.calculator import *
 
 
