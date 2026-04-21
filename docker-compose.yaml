@@ -1,0 +1,26 @@
+services:
+  nearrt-ric:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      retries: 3
+
+  nonrt-ric:
+    build:
+      context: .
+      dockerfile: Dockerfile.nonrt
+    ports:
+      - "8001:8001"
+    depends_on:
+      - nearrt-ric
+    environment:
+      - NEARRT_RIC_URL=http://nearrt-ric:8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8001/health"]
+      interval: 10s
+      retries: 3
