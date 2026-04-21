@@ -1,0 +1,13 @@
+gnb_id: gNB-1
+metrics:
+  cqi: 11
+  prb_utilization: 86.5
+  sinr_db: 15.5
+  throughput_mbps: 50.0
+slice_config:
+- priority: high
+  slice_id: 1
+  type: eMBB
+- priority: critical
+  slice_id: 2
+  type: URLLC

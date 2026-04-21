@@ -1,0 +1,21 @@
+{
+  "gnb_id": "gNB-1",
+  "metrics": {
+    "throughput_mbps": 50.0,
+    "sinr_db": 15.5,
+    "cqi": 11,
+    "prb_utilization": 86.5
+  },
+  "slice_config": [
+    {
+      "slice_id": 1,
+      "type": "eMBB",
+      "priority": "high"
+    },
+    {
+      "slice_id": 2,
+      "type": "URLLC",
+      "priority": "critical"
+    }
+  ]
+}
